@@ -34,13 +34,25 @@ It would be easy to write these up as two unrelated one-off findings — differe
 ## Common thread: the database is only as protected as its narrowest path to it
 
 ```
-                     Appointment                         Sequel
-                     ───────────                         ──────
- Attacker  ──HTTP──▶  Web App (PHP)  ──unsafe SQL──▶      Attacker ──mysql client──▶
-                       string concat          │            (no app layer at all)
-                                               ▼                       │
-                                          MariaDB/MySQL  ◀─────────────┘
-                                          (root, no password)
+       ## Common thread: the database is only as protected as its narrowest path to it
+
+```
+         Appointment
+    (app layer in the way) 
++----------+       +------------------+       +------------------+
+| Attacker |------>|  Web App (PHP)   |------>|                  |
++----------+  HTTP |  login.php       |  SQL  |                  |
+                   |  string-concat   |       |                  |
+                   +------------------+       |   MariaDB /      |
+                                              |   MySQL          |
++----------+       +------------------+        |                  |
+| Attacker |------->|  mysql client   |------->|                  |
++----------+  root, |  no password    |  SQL   |                  |
+              no pw +------------------+       +------------------+
+
+          Sequel
+    (no app layer at all)
+```
 ```
 
 Appointment's database was never directly reachable from the network — every request to it had to pass through a PHP application that (mis)handled the query construction. Sequel's database was reachable *directly*, with no application in front of it whatsoever, and the "vulnerability" was simply that nothing was requiring a password on the way in. Same class of asset at the end of both paths; the entire difference is how many layers of trust an attacker has to go through to reach it, and whether each of those layers actually enforces anything.
