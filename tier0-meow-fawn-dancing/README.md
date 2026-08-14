@@ -60,23 +60,23 @@ This is enough to fully enumerate and read an unauthenticated instance, which is
                                         │  (RESP protocol, plaintext)
                                         ▼
    ┌───────────────────────────────────────────────────────────────┐
-   │  Target host                                                   │
-   │                                                                 │
+   │  Target host                                                  │
+   │                                                               │
    │   ┌─────────────────────────┐        writes RDB snapshot to   │
    │   │   redis-server (5.0.7)  │──────────────────────────┐      │
-   │   │   bind 0.0.0.0          │                           │      │
-   │   │   requirepass: (unset)  │                           ▼      │
+   │   │   bind 0.0.0.0          │                           │     │
+   │   │   requirepass: (unset)  │                           ▼     │
    │   │   protected-mode: no    │                   ┌──────────────┐│
    │   └─────────────────────────┘                   │ filesystem   ││
-   │                                                   │ (writable by ││
-   │                                                   │ redis user)  ││
-   │                                                   └──────┬───────┘│
-   │                                                          │        │
-   │                                    if redis user's       │        │
-   │                                    ~/.ssh is writable ───┘        │
-   │                                    and dir/dbfilename              │
-   │                                    redirected there:                │
-   │                                    RDB write == authorized_keys write│
+   │                                                 │ (writable by ││
+   │                                                 │ redis user)  ││
+   │                                                 └──────┬───────┘│
+   │                                                        │      │
+   │                                  if redis user's       │      │
+   │                                  ~/.ssh is writable ───┘      │
+   │                                  and dir/dbfilename           │
+   │                                  redirected there:            │
+   │                             RDB write == authorized_keys write│
    └───────────────────────────────────────────────────────────────┘
 ```
 
