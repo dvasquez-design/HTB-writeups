@@ -1,0 +1,15 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Notas/borradores que no querés publicar
+drafts/
+*.draft.md
+
+# Screenshots sin procesar si tenés una carpeta de trabajo aparte
+raw-screenshots/
