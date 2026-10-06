@@ -9,11 +9,11 @@ Writeups propios de máquinas de Hack The Box, organizados por carpeta — cada 
 
 | Máquina | Dificultad | Vector principal |
 |---|---|---|
-| [Meow](./meow) | Tier 0 | Telnet sin autenticación |
-| [Fawn](./fawn) | Tier 0 | FTP anónimo |
-| [Dancer](./dancer) | Tier 0 | SMB (enumeración extendida) |
-| [Redeemer](./redeemer) | Fácil | Redis sin autenticación — tres rutas de RCE |
-| [Three](./three) | Fácil | Enumeración de vhost + bucket S3 mal configurado → RCE |
+| Meow | Tier 0 | Telnet sin autenticación |
+| Fawn | Tier 0 | FTP anónimo |
+| Dancer | Tier 0 | SMB (enumeración extendida) |
+| Redeemer | Fácil | Redis sin autenticación — tres rutas de RCE |
+| Three | Fácil | Enumeración de vhost + bucket S3 mal configurado → RCE |
 
 ## Licencia
 
